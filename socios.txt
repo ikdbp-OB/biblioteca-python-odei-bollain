@@ -1,0 +1,15 @@
+SOC001,Carlos Gómez,carlos.gomez@email.com,LIB001
+SOC002,María Rodríguez,maria.rodriguez@email.com,LIB006
+SOC003,Juan Martínez,juan.martinez@email.com,LIB002
+SOC004,Ana López,ana.lopez@email.com,LIB008
+SOC005,Luis Fernández,luis.fernandez@email.com,LIB004
+SOC006,Laura Sánchez,laura.sanchez@email.com,LIB011
+SOC007,Diego Pérez,diego.perez@email.com,LIB013
+SOC008,Sofia Gómez,sofia.gomez@email.com,LIB015
+SOC009,Javier Díaz,javier.diaz@email.com,LIB018
+SOC010,Elena Morales,elena.morales@email.com,LIB020
+SOC011,Pablo Romero,pablo.romero@email.com,LIB022
+SOC012,Lucía Navarro,lucia.navarro@email.com,LIB024
+SOC013,Marta Torres,marta.torres@email.com,none
+SOC014,Hugo Gutiérrez,hugo.gutierrez@email.com,LIB028
+SOC015,Valeria Ruiz,valeria.ruiz@email.com,none
