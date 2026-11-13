@@ -42,3 +42,12 @@ def realizar_devolucion(libros, socios, cod_socio):
 
     registrar_log("DEVOLUCION", f"Socio {cod_socio} devolvió el libro {cod_libro}")
     return socio, cod_libro
+
+def obtener_socios_con_libro(libros, socios):
+    resultado = []
+    for socio in socios:
+        if socio.tiene_libro():
+            libro = next((l for l in libros if l.codigoL == socio.cod_libro), None)
+            titulo = libro.titulo if libro else "Título desconocido"
+            resultado.append((socio, titulo))
+    return resultado
