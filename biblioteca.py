@@ -59,3 +59,11 @@ def registrar_libro(libros, cod, titulo, autor, año, categoria):
     libros.append(nuevo)
     registrar_log("ALTA_LIBRO", f"Añadido libro {cod} - {titulo}")
     return nuevo
+
+def registrar_socio(socios, cod, nombre, email):
+    if any(s.codigoS == cod for s in socios):
+        raise DatosIncorrectos("Ya existe un socio con ese código", cod)
+    nuevo = Socio(cod, nombre, email)
+    socios.append(nuevo)
+    registrar_log("ALTA_SOCIO", f"Añadido socio {cod} - {nombre}")
+    return nuevo
