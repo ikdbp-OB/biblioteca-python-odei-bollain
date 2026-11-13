@@ -18,3 +18,18 @@ def cargar_libros(ruta="datos/libros.txt"):
                 cod_socio.strip()
             ))
     return libros
+
+def cargar_socios(ruta="datos/socios.txt"):
+    socios = []
+    with open(ruta, "r", encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            codigoS, nombre, email, cod_libro = line.strip().split(",", 3)
+            socios.append(Socio(
+                codigoS.strip(),
+                nombre.strip(),
+                email.strip(),
+                cod_libro.strip()
+            ))
+    return socios
