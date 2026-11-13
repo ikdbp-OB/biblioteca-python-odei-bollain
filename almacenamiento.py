@@ -44,3 +44,8 @@ def guardar_datos(libros, socios, ruta_libros="datos/libros.txt", ruta_socios="d
         for s in socios:
             libro_txt = s.cod_libro if s.cod_libro is not None else "none"
             f.write(f"{s.codigoS},{s.nombre},{s.email},{libro_txt}\n")
+
+def registrar_log(evento, detalles, ruta_log="log.txt"):
+    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(ruta_log, "a", encoding="utf-8") as f:
+        f.write(f"[{fecha}][{evento}][{detalles}]\n")
