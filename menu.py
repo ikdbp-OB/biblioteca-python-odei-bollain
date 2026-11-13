@@ -2,7 +2,7 @@ from errores.error import DatosIncorrectos
 from almacenamiento import guardar_datos
 import biblioteca as ctrl
 
-def menu():
+def menu(libros, socios):
     cerrar = 0
     while (cerrar == 0):
         print("------------BIBLIOTECA------------")
@@ -22,8 +22,7 @@ def menu():
             case 2:
                 vista_listar_disponibles(libros)
             case 3:
-                print(3)
-
+                vista_buscar_titulo(libros)
             case 4:
                 print(4)
 
@@ -44,7 +43,7 @@ def menu():
                     print("Volviendo al programa ...")
     print("Cerrando programa...")
 def vista_listar_libros(libros):
-    print("\n--- LISTA DE TODOS LOS LIBROS ---")
+    print("\n---LISTA DE TODOS LOS LIBROS---")
     if not libros:
         print("No hay libros registrados.")
         return
@@ -52,10 +51,20 @@ def vista_listar_libros(libros):
         print(libro)
 
 def vista_listar_disponibles(libros):
-    print("\n--- LIBROS DISPONIBLES ---")
+    print("\n---LIBROS DISPONIBLES---")
     disponibles = ctrl.obtener_disponibles(libros)
     if not disponibles:
         print("No hay libros disponibles en este momento.")
         return
     for libro in disponibles:
         print(libro)
+
+def vista_buscar_titulo(libros):
+    termino = input("Introduce el término a buscar en el título: ")
+    encontrados = ctrl.buscar_por_titulo(libros, termino)
+    if encontrados:
+        print(f"\nSe encontraron {len(encontrados)} coincidencia(s):")
+        for libro in encontrados:
+            print(libro)
+    else:
+        print("No existe ningún libro con ese título.")
