@@ -32,11 +32,13 @@ def menu(libros, socios):
             case 7:
                 vista_anadir_datos(libros, socios)
             case 8:
-                res = input("¿Seguro que quieres cerrar el programa? Si o No\n")
-                if (res == "Si"):
-                    cerrar = 1
+                res = input("¿Seguro que quieres cerrar el programa? Si o No\n").strip().lower()
+                if res == "si":
+                    guardar_datos(libros, socios)
+                    print("Datos guardados en los archivos.")
+                    cerrar = True
                 else:
-                    print("Volviendo al programa ...")
+                    print("Volviendo al programa...")
     print("Cerrando programa...")
 def vista_listar_libros(libros):
     print("\n---LISTA DE TODOS LOS LIBROS---")
