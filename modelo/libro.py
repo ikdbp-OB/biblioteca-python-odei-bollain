@@ -7,7 +7,7 @@ class Libro:
         self.autor = autor
         self.año = año
         self.categoria = categoria
-        self.cod_socio = cod_socio
+        self.cod_socio = None if str(cod_socio).strip().lower() in ("none", "") or cod_socio is None else str(cod_socio).strip()
 
     def esta_disponible(self):
         return self.cod_socio is None
