@@ -51,3 +51,11 @@ def obtener_socios_con_libro(libros, socios):
             titulo = libro.titulo if libro else "Título desconocido"
             resultado.append((socio, titulo))
     return resultado
+
+def registrar_libro(libros, cod, titulo, autor, año, categoria):
+    if any(l.codigoL == cod for l in libros):
+        raise DatosIncorrectos("Ya existe un libro con ese código", cod)
+    nuevo = Libro(cod, titulo, autor, año, categoria)
+    libros.append(nuevo)
+    registrar_log("ALTA_LIBRO", f"Añadido libro {cod} - {titulo}")
+    return nuevo
