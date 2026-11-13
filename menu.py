@@ -20,8 +20,7 @@ def menu():
             case 1:
                 vista_listar_libros(libros)
             case 2:
-                libros = listar_libro_disponible()
-                print (libros)
+                vista_listar_disponibles(libros)
             case 3:
                 print(3)
 
@@ -50,4 +49,13 @@ def vista_listar_libros(libros):
         print("No hay libros registrados.")
         return
     for libro in libros:
+        print(libro)
+
+def vista_listar_disponibles(libros):
+    print("\n--- LIBROS DISPONIBLES ---")
+    disponibles = ctrl.obtener_disponibles(libros)
+    if not disponibles:
+        print("No hay libros disponibles en este momento.")
+        return
+    for libro in disponibles:
         print(libro)
