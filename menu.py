@@ -1,7 +1,7 @@
 from almacenamiento import listar_libro
 from almacenamiento import listar_libro_disponible
 
-class Menu:
+def menu():
     cerrar = 0
     while (cerrar == 0):
         print("------------BIBLIOTECA------------")
