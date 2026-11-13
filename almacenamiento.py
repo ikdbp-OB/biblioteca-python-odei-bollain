@@ -1,23 +1,20 @@
+from datetime import datetime
+from modelo.libro import Libro
+from modelo.socio import Socio
 
-def listar_libro():
-    libro = ""
-    with open("datos/libros.txt", "r", encoding="utf-8") as f:
+def cargar_libros(ruta="datos/libros.txt"):
+    libros = []
+    with open(ruta, "r", encoding="utf-8") as f:
         for line in f:
             if not line.strip():
                 continue
-            codigoL, titulo, autor, año, categoria, cod_socio  = line.strip().split(",", 5)
-            libro += f"{codigoL} | {titulo} | {autor} | {año} | {categoria} | {cod_socio}\n"
-        return libro
-    
-def listar_libro_disponible():
-    libro = ""
-    with open("datos/libros.txt", "r", encoding="utf-8") as f:
-        for line in f:
-            if not line.strip():
-                continue
-            codigoL, titulo, autor, año, categoria, cod_socio  = line.strip().split(",", 5)
-            if cod_socio == "none":
-                libro += f"{codigoL} | {titulo} | {autor} | {año} | {categoria} | {cod_socio}\n"
-            else:
-                continue
-    return libro
+            codigoL, titulo, autor, año, categoria, cod_socio = line.strip().split(",", 5)
+            libros.append(Libro(
+                codigoL.strip(),
+                titulo.strip(),
+                autor.strip(),
+                año.strip(),
+                categoria.strip(),
+                cod_socio.strip()
+            ))
+    return libros
