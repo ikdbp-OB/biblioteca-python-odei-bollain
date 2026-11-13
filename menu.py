@@ -26,8 +26,7 @@ def menu(libros, socios):
             case 4:
                 vista_prestar_libro(libros, socios)
             case 5:
-                print(5)
-
+                vista_devolver_libro(libros, socios)
             case 6:
                 print(6)
 
@@ -76,3 +75,11 @@ def vista_prestar_libro(libros, socios):
         print(f"Préstamo realizado: '{libro.titulo}' prestado a {socio.nombre}.")
     except DatosIncorrectos as e:
         print(f"Error en préstamo: {e.mensaje} (Dato implicado: {e.dato_erroneo})")
+
+def vista_devolver_libro(libros, socios):
+    cod_socio = input("Código del socio que devuelve el libro: ").strip()
+    try:
+        socio, cod_libro = ctrl.realizar_devolucion(libros, socios, cod_socio)
+        print(f"Devolución completada: {socio.nombre} devolvió el libro '{cod_libro}'.")
+    except DatosIncorrectos as e:
+        print(f"Error en devolución: {e.mensaje} (Dato implicado: {e.dato_erroneo})")
