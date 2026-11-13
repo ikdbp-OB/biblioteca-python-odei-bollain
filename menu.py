@@ -28,8 +28,7 @@ def menu(libros, socios):
             case 5:
                 vista_devolver_libro(libros, socios)
             case 6:
-                print(6)
-
+                vista_socios_con_libro(libros, socios)
             case 7:
                 print(7)
 
@@ -83,3 +82,12 @@ def vista_devolver_libro(libros, socios):
         print(f"Devolución completada: {socio.nombre} devolvió el libro '{cod_libro}'.")
     except DatosIncorrectos as e:
         print(f"Error en devolución: {e.mensaje} (Dato implicado: {e.dato_erroneo})")
+
+def vista_socios_con_libro(libros, socios):
+    print("\n--- SOCIOS CON LIBROS PRESTADOS ---")
+    lista = ctrl.obtener_socios_con_libro(libros, socios)
+    if not lista:
+        print("Ningún socio tiene libros prestados actualmente.")
+        return
+    for socio, titulo in lista:
+        print(f"[{socio.codigoS}] {socio.nombre} -> Tiene: [{socio.cod_libro}] {titulo}")
