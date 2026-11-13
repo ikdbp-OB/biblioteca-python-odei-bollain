@@ -1,5 +1,6 @@
-from almacenamiento import listar_libro
-from almacenamiento import listar_libro_disponible
+from errores.error import DatosIncorrectos
+from almacenamiento import guardar_datos
+import biblioteca as ctrl
 
 def menu():
     cerrar = 0
@@ -17,8 +18,7 @@ def menu():
         num = int(input("Indica un numero la opción que requieras\n"))
         match num:
             case 1:
-                libros = listar_libro()
-                print (libros)
+                vista_listar_libros(libros)
             case 2:
                 libros = listar_libro_disponible()
                 print (libros)
@@ -44,3 +44,10 @@ def menu():
                 else:
                     print("Volviendo al programa ...")
     print("Cerrando programa...")
+def vista_listar_libros(libros):
+    print("\n--- LISTA DE TODOS LOS LIBROS ---")
+    if not libros:
+        print("No hay libros registrados.")
+        return
+    for libro in libros:
+        print(libro)
