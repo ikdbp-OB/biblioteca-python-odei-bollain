@@ -24,8 +24,7 @@ def menu(libros, socios):
             case 3:
                 vista_buscar_titulo(libros)
             case 4:
-                print(4)
-
+                vista_prestar_libro(libros, socios)
             case 5:
                 print(5)
 
@@ -68,3 +67,12 @@ def vista_buscar_titulo(libros):
             print(libro)
     else:
         print("No existe ningún libro con ese título.")
+
+def vista_prestar_libro(libros, socios):
+    cod_libro = input("Código del libro: ").strip()
+    cod_socio = input("Código del socio: ").strip()
+    try:
+        libro, socio = ctrl.realizar_prestamo(libros, socios, cod_libro, cod_socio)
+        print(f"Préstamo realizado: '{libro.titulo}' prestado a {socio.nombre}.")
+    except DatosIncorrectos as e:
+        print(f"Error en préstamo: {e.mensaje} (Dato implicado: {e.dato_erroneo})")
