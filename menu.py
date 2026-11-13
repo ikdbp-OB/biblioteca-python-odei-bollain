@@ -30,8 +30,7 @@ def menu(libros, socios):
             case 6:
                 vista_socios_con_libro(libros, socios)
             case 7:
-                print(7)
-
+                vista_anadir_datos(libros, socios)
             case 8:
                 res = input("¿Seguro que quieres cerrar el programa? Si o No\n")
                 if (res == "Si"):
@@ -91,3 +90,25 @@ def vista_socios_con_libro(libros, socios):
         return
     for socio, titulo in lista:
         print(f"[{socio.codigoS}] {socio.nombre} -> Tiene: [{socio.cod_libro}] {titulo}")
+
+def vista_anadir_datos(libros, socios):
+    opcion = input("¿Qué deseas añadir? (1. Libro / 2. Socio): ").strip()
+    try:
+        if opcion == "1":
+            cod = input("Código del libro: ").strip()
+            titulo = input("Título: ").strip()
+            autor = input("Autor: ").strip()
+            año = input("Año: ").strip()
+            categoria = input("Categoría: ").strip()
+            ctrl.registrar_libro(libros, cod, titulo, autor, año, categoria)
+            print("Libro añadido correctamente.")
+        elif opcion == "2":
+            cod = input("Código del socio: ").strip()
+            nombre = input("Nombre: ").strip()
+            email = input("Email: ").strip()
+            ctrl.registrar_socio(socios, cod, nombre, email)
+            print("Socio añadido correctamente.")
+        else:
+            print("Opción no válida.")
+    except DatosIncorrectos as e:
+        print(f"Error al añadir: {e.mensaje} (Dato implicado: {e.dato_erroneo})")
